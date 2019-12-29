@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask_wtf import Form
-from wtforms import StringField, SelectField, SelectMultipleField, DateTimeField
+from wtforms import StringField, SelectField, SelectMultipleField, DateTimeField, BooleanField
 from wtforms.validators import DataRequired, AnyOf, URL
 
 class ShowForm(Form):
@@ -22,6 +22,12 @@ class VenueForm(Form):
     )
     city = StringField(
         'city', validators=[DataRequired()]
+    )
+    seeking_description = StringField(
+        'seeking_description', render_kw={'disabled':True}
+    )
+    seeking_talent = BooleanField(
+        'seeking_talent'
     )
     state = SelectField(
         'state', validators=[DataRequired()],
@@ -83,7 +89,7 @@ class VenueForm(Form):
         'address', validators=[DataRequired()]
     )
     phone = StringField(
-        'phone'
+        'phone', validators=[DataRequired()]
     )
     image_link = StringField(
         'image_link'
@@ -117,12 +123,22 @@ class VenueForm(Form):
         'facebook_link', validators=[URL()]
     )
 
+    website = StringField(
+        'website', validators=[URL()]
+    )
+
 class ArtistForm(Form):
     name = StringField(
         'name', validators=[DataRequired()]
     )
     city = StringField(
         'city', validators=[DataRequired()]
+    )
+    seeking_description = StringField(
+        'seeking_description', render_kw={'disabled':True}
+    )
+    seeking_venue = BooleanField(
+        'seeking_venue'
     )
     state = SelectField(
         'state', validators=[DataRequired()],
@@ -182,7 +198,7 @@ class ArtistForm(Form):
     )
     phone = StringField(
         # TODO implement validation logic for state
-        'phone'
+        'phone', validators=[DataRequired()]
     )
     image_link = StringField(
         'image_link'
@@ -211,6 +227,9 @@ class ArtistForm(Form):
             ('Soul', 'Soul'),
             ('Other', 'Other'),
         ]
+    )
+    website = StringField(
+        'website', validators=[URL()]
     )
     facebook_link = StringField(
         # TODO implement enum restriction

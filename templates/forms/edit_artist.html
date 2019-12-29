@@ -29,6 +29,21 @@
         {{ form.genres(class_ = 'form-control', placeholder='Genres, separated by commas', id=form.state, autofocus = true) }}
       </div>
       <div class="form-group">
+        <label for="genres">Seeking Venue?</label>
+        <div class="form-inline">
+          <div class="form-group" style="width:8%; margin-right: 7px;">
+            {{ form.seeking_venue(class_ = 'form-control', autofocus = true, id="seeking-checkbox") }}
+          </div>
+          <div class="form-group" style="width:90%">
+            {{ form.seeking_description(class_ = 'form-control', placeholder='Description', autofocus = true) }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="genres">Website</label>
+        {{ form.website(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
+      </div>
+      <div class="form-group">
           <label for="genres">Facebook Link</label>
           {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
         </div>
